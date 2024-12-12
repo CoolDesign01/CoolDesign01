@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for My Love</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffccf9, #ffc8dd);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-top: 30px;
+            animation: fadeIn 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.5;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .heart {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .heart img {
+            width: 120px;
+            margin: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .heart img:hover {
+            transform: scale(1.2);
+        }
+
+        .message {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            background: #ff99cc;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background: #ff80b3;
+        }
+
+        .hidden-message {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 20px;
+            animation: popIn 1s ease-in-out;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        .heart-animation {
+            position: absolute;
+            animation: explode 1s ease-out forwards;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 1rem;
+            color: #ffe6f2;
+        }
+
+        @media (max-width: 768px) {
+            .heart img {
+                width: 90px;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Surprise for My Love</h1>
+        <div class="heart">
+            <img src="i" alt="Heart 1">
+            <img src="https://via.placeholder.com/120/FFC0CB/FFFFFF?text=You" alt="Heart 2">
+            <img src="https://via.placeholder.com/120/FF69B4/FFFFFF?text=Forever" alt="Heart 3">
+            <img src="https://via.placeholder.com/120/ADD8E6/FFFFFF?text=Smile" alt="Heart 4">
+            <img src="https://via.placeholder.com/120/87CEEB/FFFFFF?text=Dream" alt="Heart 5">
+            <img src="https://via.placeholder.com/120/B0E0E6/FFFFFF?text=Always" alt="Heart 6">
+            <img src="https://via.placeholder.com/120/B0E0E6/FFFFFF?text=Always" alt="Heart 6">
+        </div>
+        <p class="message">You are my sunshine, my moon, and all my stars. Thank you for being you!</p>
+        <div class="button-container">
+            <button class="button" onclick="showMessage()">Click for a Surprise!</button>
+        </div>
+        <p class="hidden-message" id="hiddenMessage">I Love You to the Moon and Back! 💖</p>
+    </div>
+
+    <footer>
+        Made with Love &hearts; for You
+    </footer>
+
+    <script>
+        function createHeartAnimation(x, y) {
+            const heart = document.createElement('div');
+            heart.className = 'heart-animation';
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            heart.innerHTML = '<p>&#128151;</p>';
+            document.body.appendChild(heart);
+
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        function showMessage() {
+            const message = document.getElementById('hiddenMessage');
+            message.style.display = 'block';
+            message.innerHTML += '<br>Thank you for making my life so special! 💕';
+
+            for (let i = 0; i < 50; i++) {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                createHeartAnimation(x, y);
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            createHeartAnimation(e.clientX, e.clientY);
+        });
+    </script>
+    
+</body>
+</html>
